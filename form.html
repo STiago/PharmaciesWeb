@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="list_pharmacies">
+<head>
+	<meta charset="UTF-8" />
+	<title>Admin Pharmacies</title>
+</head>
+<body ng-controller="PharmaciesController" ng-init="getPharmacies()">
+	<h3>List of Pharmacies</h3>
+	<div>
+		<div ng-repeat="pharmacy in pharmacies">
+            <ul>
+			    <li> {{pharmacy.id}} - {{pharmacy.name}} - {{pharmacy.province}} - {{pharmacy.address}} </li>
+            </ul>
+		</div>
+	</div>
+	<div class="form">	
+        <h3>Add pharmacy</h3>	
+		<label for="name">Name:</label>
+		<input id="name" ng-model="name" type="text" />
+		
+		<label for="province">Province:</label>
+		<input id="province" ng-model="province" type="text" />
+
+        <label for="address">Address:</label>
+		<input id="address" ng-model="address" type="text" />
+
+        <label for="city">City:</label>
+		<input id="city" ng-model="city" type="text" />
+
+        <label for="postalCode">Postal Code:</label>
+		<input id="postalCode" ng-model="postalCode" type="text" />
+
+        <label for="latitude">Latitude:</label>
+		<input id="latitude" ng-model="latitude" type="text" />
+
+        <label for="longitude">Longitude:</label>
+		<input id="longitude" ng-model="longitude" type="text" />
+		
+		<button id="addBtn" class="btn" ng-click="addPharmacy()">Añadir farmacia</button>
+	</div>
+	
+	<h4>{{msg}}</h4>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-resource.js"></script>
+	<script src="admin.js"></script>
+</body>
+</html>
