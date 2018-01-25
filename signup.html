@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign up form</title>
+    <meta charset="utf-8">
+    <link type="text/css" href="./css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<h2>Sign up form</h2>
+	<div>
+		<form id="form-login" action="index.html" method="post" autocomplete="off">
+			<p><label >User:</label></p>
+				<input type="text" id="user" placeholder="Add User" autofocus="" required="" name="userid"></p>
+			<p><label>Password:</label></p>
+				<input type="password" id="contrasenia" placeholder="Add Password" required="" name="pwd"></p>
+			<p id="bot"><input type="submit" id="submit" name="submit" value="Send" class="boton"></p>
+		</form>
+	</div>
+	<div>Sistema de Login Y Registro</div>
+	<script language="javascript">
+		function check(form){
+			if (form.userid.value=="" || form.pwd.value=="") { 
+				alert("[Error] - User or password empty.")
+				return false;
+			} else {
+				if(form.userid.value == "admin" && form.pwd.value == "admin"){
+					alert("Loged as admin.")
+					window.open('admin-view.html')
+					return true;
+				}else{	
+					alert("Loged as normal user.")
+					return true;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

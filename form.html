@@ -3,21 +3,29 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Admin Pharmacies</title>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Montserrat:700|Pacifico' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://likeastore.github.io/ngDialog/css/ngDialog.css">
+	<link rel="stylesheet" href="https://likeastore.github.io/ngDialog/css/ngDialog-theme-default.css">
+	<link rel="stylesheet" href="https://likeastore.github.io/ngDialog/css/ngDialog-theme-flat.css">
+
+
 </head>
 <body ng-controller="PharmaciesController" ng-init="getPharmacies()">
 	<h3>List of Pharmacies</h3>
 	<div>
 		<div ng-repeat="pharmacy in pharmacies">
             <ul>
-			    <li> {{pharmacy.id}} - {{pharmacy.name}} - {{pharmacy.province}} - {{pharmacy.address}} </li>
+			    <li> {{pharmacy.id}} - {{pharmacy.name}} - {{pharmacy.province}} - {{pharmacy.address}}
+                <a href="#" ng-click="editPharmacy(pharmacy) ">Edit</a> </li>
             </ul>
 		</div>
 	</div>
-	<div class="form">	
-        <h3>Add pharmacy</h3>	
+	<div class="form">
+        <h3>Add pharmacy</h3>
 		<label for="name">Name:</label>
 		<input id="name" ng-model="name" type="text" />
-		
+
 		<label for="province">Province:</label>
 		<input id="province" ng-model="province" type="text" />
 
@@ -35,39 +43,33 @@
 
         <label for="longitude">Longitude:</label>
 		<input id="longitude" ng-model="longitude" type="text" />
-		
+
 		<button id="addBtn" class="btn" ng-click="addPharmacy()">Add pharmacy</button>
 	</div>
-    <div class="form">	
-        <h3>Update pharmacy</h3>	
-		<label for="name">Name:</label>
-		<input id="name" ng-model="name" type="text" />
-		
-		<label for="province">Province:</label>
-		<input id="province" ng-model="province" type="text" />
 
-        <label for="address">Address:</label>
-		<input id="address" ng-model="address" type="text" />
-
-        <label for="city">City:</label>
-		<input id="city" ng-model="city" type="text" />
-
-        <label for="postalCode">Postal Code:</label>
-		<input id="postalCode" ng-model="postalCode" type="text" />
-
-        <label for="latitude">Latitude:</label>
-		<input id="latitude" ng-model="latitude" type="text" />
-
-        <label for="longitude">Longitude:</label>
-		<input id="longitude" ng-model="longitude" type="text" />
-		
-		<button id="putBtn" class="btn" ng-click="putPharmacy()">Update pharmacy</button>
-	</div>
-	
 	<h4>{{msg}}</h4>
-	
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-resource.js"></script>
-	<script src="admin.js"></script>
+
+
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-resource.js"></script>
+			<script src="https://likeastore.github.io/ngDialog/js/ngDialog.min.js"></script>
+			<script src="admin.js"></script>
+
+
+			<script type="text/ng-template" id="pharmacy-popup">
+			<div class="ngdialog-message">
+			    <h2>{{pharmacy.name}}</h2>
+			    <input ng-model="pharmacy.name"/>
+					<input ng-model="pharmacy.address"/>
+					<input ng-model="pharmacy.province"/>
+					<input ng-model="pharmacy.city"/>
+					<input ng-model="pharmacy.postalCode"/>
+					<input ng-model="pharmacy.latitude"/>
+					<input ng-model="pharmacy.longitude"/>
+			</div>
+			<div class="ngdialog-buttons mt">
+			    <button ng-click="save(pharmacy)">Save</button>
+			</div>
+			</script>
 </body>
 </html>

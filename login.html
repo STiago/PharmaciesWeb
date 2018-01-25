@@ -23,26 +23,27 @@
 <tr>
 <td ><input type="Reset"></td>
 <td><input type="submit" onclick="return check(this.form)" value="Login"></td>
+<td><a type="button" href="signup.html" style="color:white;">SigUp</a></td>
 </tr>
 
 </table>
 </form>
 <script language="javascript">
-function check(form)
-{
-
-if(form.userid.value == "admin" && form.pwd.value == "admin")
-{
-	alert("Loged as admin.")
-	window.open('form.html')
-	//return true;
-}
-else
-{	
-	alert("Loged as normal user.")
-    //window.open('index.html')
-	return true;
-}
+function check(form){
+	if (form.userid.value=="" || form.pwd.value=="") { 
+		alert("[Error] - User or password empty.")
+		return false;
+	}else{
+		if(form.userid.value == "admin" && form.pwd.value == "admin"){
+			alert("Loged as admin.")
+			window.open('form.html')
+			//return true;
+		}else{	
+			alert("Loged as normal user.")
+			//window.open('index.html')
+			return true;
+		}
+	}
 }
 </script>
 
