@@ -5,3 +5,5 @@ angular.module('list_pharmacies', [])
             $scope.pharmacies = response.data;
         });
 });
+
+ 
