@@ -19,10 +19,34 @@
     <div style="float: right; width: 37%;" ng-controller="PharmaciesController">
       <h3> List of pharmacies</h3>
       <ul>
-        <li id="id" ng-repeat="pharmacy in pharmacies">{{pharmacy.id}} - {{pharmacy.name}} </li>
+        <li id="id" ng-repeat="pharmacy in pharmacies">{{pharmacy.id}} - {{pharmacy.name}} - <a href="list_drugs.html">Drugs<a></li>
       </ul>
     </div>
     <div id="map"></div>
+    <div style="float: left; width: 64%;">
+        <form name="loginForm" method="post" action="index.html">
+            <table width="20%" bgcolor="#ADD8E6" align="center">
+                <tr>
+                <td colspan=2><center><font size=4><b>Admin Login</b></font></center></td>
+                </tr>
+
+                <tr>
+                <td>Username:</td>
+                <td><input type="text" size=25 name="userid"></td>
+                </tr>
+
+                <tr>
+                <td>Password:</td>
+                <td><input type="Password" size=25 name="pwd"></td>
+                </tr>
+
+                <tr>
+                <td ><input type="Reset"></td>
+                <td><input type="submit" onclick="return check(this.form)" value="Login"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
     <script>
       function initMap() {
 		var home = {lat: 37.151, lng: -3.590};
@@ -70,5 +94,22 @@
 	  async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="pharmacies.js"></script>
+    <script language="javascript">
+        function check(form){
+	        if (form.userid.value=="" || form.pwd.value=="") { 
+		        alert("[Error] - Admin or password empty.")
+		        return false;
+	        }else{
+		        if(form.userid.value == "admin" && form.pwd.value == "admin"){
+			        alert("Loged as admin.")
+			        window.open('form.html')
+			        //return true;
+		        }else{	
+			        alert("Wrong admin.")
+			        return true;
+		        }
+	        }
+        }
+    </script>
   </body>
 </html>
